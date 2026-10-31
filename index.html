@@ -321,6 +321,30 @@ details.pb>summary::-webkit-details-marker{display:none}
 details.pb .pb-body{padding:0 16px 16px;display:flex;flex-direction:column;gap:12px}
 footer{text-align:center;color:var(--muted);font-size:12.5px;padding-block:6px 30px}
 [hidden]{display:none!important}
+
+.inf-intro{background:var(--pale);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;margin:12px 0}
+.inf-intro p{margin:0 0 6px;line-height:1.8}.inf-steps{margin:0;padding-inline-start:20px;color:var(--muted);line-height:1.9}
+.inf-bar{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 14px}
+.chip{font:inherit;font-size:.9rem;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 14px;cursor:pointer}
+.chip.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.inf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:14px}
+.inf{position:relative;padding:16px;border-top:4px solid var(--trk,var(--line));display:flex;flex-direction:column;gap:10px}
+.inf.t-w{--trk:#42B5D1}.inf.t-f{--trk:#D4A23C}
+.inf-h{display:flex;gap:12px;align-items:center}
+.ring{--v:0;flex:0 0 56px;height:56px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--rc) calc(var(--v)*1%),var(--line) 0);}
+.ring b{width:44px;height:44px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-size:1.05rem;color:var(--ink)}
+.inf-h h4{margin:0;font-size:1.05rem;line-height:1.4}.inf-h a{color:var(--muted);font-size:.85rem;text-decoration:none;direction:ltr;unicode-bidi:isolate}
+.inf-h a:hover{color:var(--navy);text-decoration:underline}
+.tags{display:flex;flex-wrap:wrap;gap:6px}.tag{font-size:.78rem;padding:3px 9px;border-radius:999px;background:var(--new-bg);color:var(--new)}
+.tag.trk{background:color-mix(in srgb,var(--trk) 18%,transparent);color:var(--ink);font-weight:700}
+.tag.t1{background:var(--ok-bg);color:var(--ok)}.tag.t2{background:var(--run-bg);color:var(--run)}.tag.t3{background:#F7E3E0;color:var(--bad)}
+.inf dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:.9rem;line-height:1.7}
+.inf dt{color:var(--muted)}.inf dd{margin:0}
+.inf .nt{font-size:.86rem;color:var(--muted);line-height:1.8;margin:0}
+.inf-f{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:auto;padding-top:8px;border-top:1px dashed var(--line)}
+.inf-f select{font:inherit;font-size:.85rem;padding:5px 8px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+.inf-f .del{margin-inline-start:auto}
+.inf-total{margin:14px 0 0;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -449,7 +473,9 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;padding-block:6px 3
           <form class="form" id="pForm">
             <label>الاسم أو الحساب<input id="pName" required maxlength="200" placeholder="مثال: حساب أخبار ينبع"></label>
             <label>النوع<select id="pType"><option>مؤثر صغير</option><option>حساب إخباري</option><option>سفير واتساب</option><option>إمام أو خطيب</option><option>أخرى</option></select></label>
-            <label>المنصة<select id="pPlat"><option>سناب</option><option>إكس</option><option>واتساب</option><option>تيك توك</option></select></label>
+            <label>المنصة<select id="pPlat"><option>سناب</option><option>إكس</option><option>واتساب</option><option>تيك توك</option><option>إنستغرام</option><option>يوتيوب</option></select></label>
+            <label>المسار<select id="pTrack"><option value="">—</option><option value="w">وقف الأم</option><option value="f">فتية المحراب</option></select></label>
+            <label>الرابط<input id="pLink" type="url" dir="ltr" placeholder="https://"></label>
             <label>المتابع من الفريق<select id="pOwner"></select></label>
             <label>المرحلة<select id="pStage"></select></label>
             <label>الكلفة (ريال)<input id="pCost" type="number" min="0" step="50" value="0" inputmode="numeric"></label>
@@ -457,11 +483,20 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;padding-block:6px 3
             <button class="btn" type="submit">إضافة</button>
           </form>
         </details>
-        <div class="tablewrap"><table>
-          <thead><tr><th>الاسم</th><th>النوع</th><th>المنصة</th><th>المتابع</th><th>المرحلة</th><th>الكلفة (ريال)</th><th>الكلمة الدلالية</th><th></th></tr></thead>
-          <tbody id="pBody"></tbody>
-          <tfoot><tr><td colspan="5">إجمالي الكلفة المتفق عليها (دون المعتذرين)</td><td id="pTotal">0</td><td colspan="2"></td></tr></tfoot>
-        </table></div>
+        <div class="inf-intro">
+          <p><b>قائمة مرشحي ينبع</b> مقيّمة أولياً بمقياس الخطة (100 نقطة، والحد الأدنى 70). الدرجة مبدئية من الملف العام، وتُعتمد بعد طلب لقطة الإحصاءات ورقم «موثوق».</p>
+          <ol class="inf-steps"><li>اطلب لقطة إحصاءات آخر 30 يوماً ونصيب ينبع من المشاهدين.</li><li>طابق رقم «موثوق» في منصة موثوق.</li><li>أعد التقييم في «أدوات القرار» ثم حدّث المرحلة.</li></ol>
+        </div>
+        <div class="inf-bar" role="group" aria-label="تصفية المرشحين">
+          <button type="button" class="chip on" data-pf="">الكل</button>
+          <button type="button" class="chip" data-pf="w">وقف الأم</button>
+          <button type="button" class="chip" data-pf="f">فتية المحراب</button>
+          <button type="button" class="chip" data-pf="سناب">سناب</button>
+          <button type="button" class="chip" data-pf="إكس">إكس</button>
+          <button type="button" class="chip" data-pf="تيك توك">تيك توك</button>
+        </div>
+        <div class="inf-grid" id="pGrid"></div>
+        <p class="inf-total">إجمالي الكلفة المتفق عليها (دون المعتذرين): <b id="pTotal">0</b> ريال</p>
       </section>
     </div>
 
@@ -719,10 +754,24 @@ function renderTasks(){let l=state.tasks.slice().sort((a,b)=>(a.status===2)-(b.s
   if(filter.area)l=l.filter(x=>x.area===filter.area);if(filter.owner)l=l.filter(x=>ownerOf(x)===filter.owner);if(filter.status!=="")l=l.filter(x=>x.status===+filter.status);
   $("#taskCount").textContent=cnt(l.length,"مهمة واحدة","مهمتان","مهام","مهمة");
   $("#taskList").innerHTML=l.length?l.map(x=>taskHTML(x,!filter.area)).join(""):`<div class="empty">${state.tasks.length?"لا توجد مهام بهذه التصفية.":"لا مهام بعد."}</div>`}
-function renderPartners(){const l=state.partners.slice().sort((a,b)=>String(a.name).localeCompare(b.name,"ar"));
-  $("#pBody").innerHTML=l.length?l.map(x=>`<tr data-id="${esc(x.id)}"><td><b>${esc(x.name)}</b></td><td>${esc(x.type)}</td><td>${esc(x.plat)}</td><td>${esc(x.owner||"—")}</td><td><select data-act="stage" aria-label="المرحلة">${opts(STAGES,null,x.stage)}</select></td><td>${fmt(x.cost)}</td><td>${esc(x.code||"—")}</td><td><button class="del" data-act="pdel" type="button">حذف</button></td></tr>`).join(""):`<tr><td colspan="8"><div class="empty">لا أسماء بعد. أضف المرشحين من المؤثرين والسفراء ليتابعهم الفريق.</div></td></tr>`;
-  const tot=l.filter(x=>x.stage!=="معتذر").reduce((a,x)=>a+(+x.cost||0),0);$("#pTotal").textContent=fmt(tot);
-  $("#pTotalTop").textContent=l.length?`${fmt(l.length)} اسماً · ${fmt(tot)} ريال`:""}
+let pf="";
+const TRK={w:"وقف الأم",f:"فتية المحراب"};
+function tierCls(t){return /أولى/.test(t)?"t1":/ثانية/.test(t)?"t2":t?"t3":""}
+function renderPartners(){let l=state.partners.slice().sort((a,b)=>(b.score??-1)-(a.score??-1)||String(a.name).localeCompare(b.name,"ar"));
+  const all=l;if(pf)l=l.filter(x=>x.track===pf||x.plat===pf);
+  $("#pGrid").innerHTML=l.length?l.map(x=>{const v=x.score??0,rc=v>=78?"var(--ok)":v>=70?"var(--run)":"var(--bad)";
+    return `<article class="card inf t-${esc(x.track||"")}" data-id="${esc(x.id)}">
+    <div class="inf-h"><div class="ring" style="--v:${v};--rc:${rc}" title="الدرجة المبدئية من 100"><b>${x.score==null?"—":fmt(v)}</b></div>
+      <div><h4>${esc(x.name)}</h4>${x.link?`<a href="${esc(x.link)}" target="_blank" rel="noopener">${esc(x.handle||x.link)}</a>`:`<span class="nt">${esc(x.handle||"")}</span>`}</div></div>
+    <div class="tags">${x.track?`<span class="tag trk">${esc(TRK[x.track]||x.track)}</span>`:""}<span class="tag">${esc(x.plat)}</span><span class="tag">${esc(x.type)}</span>${x.tier?`<span class="tag ${tierCls(x.tier)}">${esc(x.tier)}</span>`:""}</div>
+    <dl>${x.role&&x.role!=="—"?`<dt>الدور</dt><dd>${esc(x.role)}</dd>`:""}${x.license?`<dt>الرخصة</dt><dd>${esc(x.license)}</dd>`:""}${x.code?`<dt>الكلمة الدلالية</dt><dd>${esc(x.code)}</dd>`:""}${+x.cost?`<dt>الكلفة</dt><dd>${fmt(x.cost)} ريال</dd>`:""}</dl>
+    ${x.note?`<p class="nt">${esc(x.note)}</p>`:""}
+    <div class="inf-f"><select data-act="stage" aria-label="المرحلة">${opts(STAGES,null,x.stage)}</select><select data-act="powner" aria-label="المتابع">${opts(MEMBERS,"المتابع: —",x.owner||"")}</select><button class="del" data-act="pdel" type="button">حذف</button></div>
+    </article>`}).join(""):`<div class="empty">${all.length?"لا أسماء بهذه التصفية.":"لا أسماء بعد. أضف المرشحين من المؤثرين والسفراء ليتابعهم الفريق."}</div>`;
+  const tot=all.filter(x=>x.stage!=="معتذر").reduce((a,x)=>a+(+x.cost||0),0);$("#pTotal").textContent=fmt(tot);
+  const q=all.filter(x=>(x.score??0)>=70).length;
+  $("#pTotalTop").textContent=all.length?`${fmt(all.length)} اسماً · ${fmt(q)} فوق الحد الأدنى · ${fmt(tot)} ريال`:""}
+document.addEventListener("click",e=>{const c=e.target.closest("[data-pf]");if(!c)return;pf=c.dataset.pf;document.querySelectorAll("[data-pf]").forEach(z=>z.classList.toggle("on",z===c));renderPartners()});
 const pct=(a,b)=>b?nf.format(+(a/b*100).toFixed(1))+"%":"—";
 function renderWeeks(){const l=state.weeks.slice().sort((a,b)=>b.week-a.week);const t=totals();
   $("#wBody").innerHTML=l.length?l.map(x=>`<tr><td><b>${fmt(x.week)}</b></td><td>${fmt(x.views)}</td><td>${fmt(x.clicks)}</td><td>${pct(x.clicks,x.views)}</td><td>${fmt(x.don)}</td><td>${pct(x.don,x.clicks)}</td><td>${fmt(x.msgs)}</td><td>${fmt(x.subs)}</td><td>${fmt(x.spend)}</td><td>${x.don?fmt(Math.round(x.spend/x.don)):"—"}</td><td style="white-space:normal;min-width:200px">${esc(x.note||"")}</td><td>${esc(x.updated_by||"")}</td></tr>`).join(""):`<tr><td colspan="12"><div class="empty">لم تُسجَّل أرقام بعد.</div></td></tr>`;
@@ -743,9 +792,10 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-act]");if(
     const k=b.dataset.act==="del"?"tasks":"partners";run(k,sb.from(TBL[k]).delete().eq("id",id))}});
 document.addEventListener("change",e=>{const s=e.target;if(!s.dataset||!s.dataset.act)return;const row=s.closest("[data-id]");if(!row)return;const id=row.dataset.id;
   if(s.dataset.act==="owner")run("tasks",sb.from(TBL.tasks).update({owner:s.value,updated_by:me,updated_at:now()}).eq("id",id));
+  if(s.dataset.act==="powner")run("partners",sb.from(TBL.partners).update({owner:s.value,updated_by:me,updated_at:now()}).eq("id",id));
   if(s.dataset.act==="stage")run("partners",sb.from(TBL.partners).update({stage:s.value,updated_by:me,updated_at:now()}).eq("id",id))});
 $("#pForm").addEventListener("submit",async e=>{e.preventDefault();const name=$("#pName").value.trim();if(!name)return;
-  if(await run("partners",sb.from(TBL.partners).insert({name,type:$("#pType").value,plat:$("#pPlat").value,owner:$("#pOwner").value,stage:$("#pStage").value,cost:Math.max(0,+$("#pCost").value||0),code:$("#pCode").value.trim(),updated_by:me}))){$("#pName").value="";$("#pCode").value="";$("#pCost").value=0}});
+  if(await run("partners",sb.from(TBL.partners).insert({name,type:$("#pType").value,plat:$("#pPlat").value,owner:$("#pOwner").value,stage:$("#pStage").value,cost:Math.max(0,+$("#pCost").value||0),code:$("#pCode").value.trim(),track:$("#pTrack").value,link:$("#pLink").value.trim(),updated_by:me}))){$("#pName").value="";$("#pLink").value="";$("#pCode").value="";$("#pCost").value=0}});
 $("#wForm").addEventListener("submit",e=>{e.preventDefault();const n=i=>Math.max(0,Math.round(+$(i).value||0));
   run("weeks",sb.from(TBL.weeks).upsert({week:+$("#wNum").value,views:n("#wViews"),clicks:n("#wClicks"),don:n("#wDon"),msgs:n("#wMsgs"),subs:n("#wSubs"),spend:Math.max(0,+$("#wSpend").value||0),note:$("#wNote").value.trim(),updated_by:me,updated_at:now()},{onConflict:"week"}))});
 $("#wNum").addEventListener("change",()=>{const x=state.weeks.find(w=>w.week===+$("#wNum").value);
