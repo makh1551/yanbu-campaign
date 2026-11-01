@@ -777,8 +777,8 @@ function grpOf(x){const t=x.tier||"";return /ابدأ/.test(t)?"s":/مستبعد
 function waqfNums(){const t=+setting("waqf_target")||0,r=+setting("waqf_raised")||0;return {t,r,rem:Math.max(0,t-r),p:t?Math.min(100,r/t*100):0}}
 function shortName(n){return String(n||"").split(/[|(،]/)[0].trim()}
 function msgFor(kind,x){const w=waqfNums(),p=nf.format(Math.floor(w.p));const n=shortName(x.name);
-  if(kind==="first")return `السلام عليكم ${n}، معك ${me||""} من الجمعية الخيرية لتحفيظ القرآن الكريم بينبع. نتابع حسابك ونراك من أقرب الأصوات لأهل ينبع. عندنا قصة من ينبع نتمنى أن تكون أنت من يرويها: وقف باسم أمهات ينبع بلغ ${p}% من مستهدفه، ونريد أن يكتمل بأهل ينبع قبل رمضان. هل يناسبك اتصال قصير أو زيارة هذا الأسبوع؟`;
-  if(kind==="brief")return `أهلاً ${n}، هذا ملخص ما اتفقنا عليه:\n• الفكرة: «أهدِ أمك سهماً في وقفها»\n• الطلب: سهم 50 ريالاً، أو سهم الوالدين 200، أو سهم الأسرة 300\n• المتبقي اليوم: ${nf.format(w.rem)} ريال\n• الرابط الوحيد: ${LINKS.w}\n• الكلمة الدلالية: ${x.code||"[تُحدد]"}\n• أيام النشر: السبت أو الثلاثاء أو الجمعة\nالتعاون احتسابي، ونراجع المسودة معك قبل النشر بيوم. جزاك الله خيراً.`;
+  if(kind==="first")return `السلام عليكم ${n}، معك ${me||""} من الجمعية الخيرية لتحفيظ القرآن الكريم بينبع. نتابع حسابك ونراك من أقرب الأصوات لأهل ينبع. عندنا قصة من ينبع نتمنى أن تكون أنت من يرويها: وقف باسم أمهات ينبع يُصرف ريعه على الدور النسائية لتحفيظ القرآن، وبلغ ${p}% من مستهدفه، ونريد أن يكتمل بأهل ينبع قبل رمضان. هل يناسبك اتصال قصير أو زيارة هذا الأسبوع؟`;
+  if(kind==="brief")return `أهلاً ${n}، هذا ملخص ما اتفقنا عليه:\n• الفكرة: «أهدِ أمك سهماً في وقفها»\n• الطلب: سهم 100 ريال باسم الأم\n• أين يذهب الريع: الدور النسائية لتحفيظ القرآن الكريم في ينبع\n• المتبقي اليوم: ${nf.format(w.rem)} ريال\n• رابط التبرع: ${LINKS.w}\n• تبرّع بأمان: https://dongovernance.ncnp.gov.sa/aman/c/4970\n• مقطع المبنى الرسمي: https://youtu.be/GDZqrkd4k50\n• الكلمة الدلالية: ${x.code||"[تُحدد]"}\n• أيام النشر: السبت أو الثلاثاء أو الجمعة\nالتعاون احتسابي، ونراجع المسودة معك قبل النشر بيوم. جزاك الله خيراً.`;
   if(kind==="thanks")return `جزاك الله خيراً يا ${n}. منشورك قرّب وقف أمهات ينبع من الاكتمال، والمتبقي اليوم ${nf.format(w.rem)} ريال. نتشرف بدعوتك ضيفاً مكرّماً في حفل الجمعية.`;return ""}
 function copyText(t){const ok=()=>notice("نُسخت الرسالة، الصقها في المحادثة.");try{navigator.clipboard.writeText(t).then(ok,()=>fallback())}catch(e){fallback()}
   function fallback(){const ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");ok()}catch(e){}ta.remove()}}
@@ -796,7 +796,7 @@ function cardHTML(x){const v=x.score??0,rc=v>=78?"var(--ok)":v>=70?"#42B5D1":"va
 function renderPartners(){const all=state.partners.slice().sort((a,b)=>(b.score??-1)-(a.score??-1)||String(a.name).localeCompare(b.name,"ar"));
   let l=all;if(pf==="mine")l=l.filter(x=>x.owner===me);else if(pf)l=l.filter(x=>x.plat===pf);
   const w=waqfNums();
-  $("#wqHero").innerHTML=`<div class="wq-k">حملة المؤثرين · مشروع واحد</div><h4>سفراء وقف الأم</h4><p>كل صوت من ينبع يقرّب الوقف من الاكتمال. هدفنا أن يصل «المتبقي» إلى الصفر قبل رمضان 1448هـ.</p>
+  $("#wqHero").innerHTML=`<div class="wq-k">مساهمة أهل ينبع · مشروع واحد</div><h4>سفراء وقف الأم</h4><p>وقف يُصرف ريعه على الدور النسائية لتحفيظ القرآن. كل صوت من ينبع يقرّبه من الاكتمال، وهدفنا أن يصل «المتبقي» إلى الصفر قبل رمضان 1448هـ.</p>
     <div class="wq-bar" role="progressbar" aria-valuenow="${Math.round(w.p)}" aria-valuemin="0" aria-valuemax="100"><i style="width:${w.p.toFixed(1)}%"></i></div>
     <div class="wq-nums"><span>المحقق <b><bdi dir="ltr">${nf.format(Math.floor(w.p))}%</bdi></b></span><span>المتبقي <b>${fmt(w.rem)}</b> ريال</span><span>السفراء النشطون <b>${fmt(all.filter(x=>["موافق","متعاقد","نشر"].includes(x.stage)).length)}</b> من ${fmt(all.filter(x=>grpOf(x)!=="x").length)}</span></div>`;
   const st=["مرشح","تم التواصل","موافق","متعاقد","نشر"];
