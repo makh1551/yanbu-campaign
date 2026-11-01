@@ -322,29 +322,48 @@ details.pb .pb-body{padding:0 16px 16px;display:flex;flex-direction:column;gap:1
 footer{text-align:center;color:var(--muted);font-size:12.5px;padding-block:6px 30px}
 [hidden]{display:none!important}
 
-.inf-intro{background:var(--pale);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;margin:12px 0}
-.inf-intro p{margin:0 0 6px;line-height:1.8}.inf-steps{margin:0;padding-inline-start:20px;color:var(--muted);line-height:1.9}
-.inf-bar{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 14px}
-.chip{font:inherit;font-size:.9rem;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 14px;cursor:pointer}
+.wq-hero{position:relative;overflow:hidden;border-radius:18px;padding:22px 22px 20px;margin:14px 0;color:#fff;background:radial-gradient(120% 140% at 100% 0%,#42B5D1 0%,#0D495D 45%,#08303E 100%)}
+.wq-hero::after{content:"";position:absolute;inset:auto -40px -60px auto;width:220px;height:220px;border-radius:50%;border:28px solid rgba(255,255,255,.06)}
+.wq-k{font-size:.82rem;letter-spacing:.02em;color:#BFE9F3;font-weight:700}
+.wq-hero h4{font-family:var(--serif);font-size:1.9rem;margin:2px 0 4px;line-height:1.3}
+.wq-hero p{margin:0 0 14px;color:#DCEFF4;line-height:1.8;max-width:56ch}
+.wq-bar{height:14px;border-radius:99px;background:rgba(255,255,255,.16);overflow:hidden}
+.wq-bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#7FD6EA,#fff);box-shadow:0 0 18px rgba(127,214,234,.7)}
+.wq-nums{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:10px;font-size:.92rem;color:#DCEFF4}
+.wq-nums b{color:#fff;font-size:1.15rem}
+.wq-pipe{list-style:none;margin:0 0 12px;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.wq-pipe li{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 6px;text-align:center;position:relative}
+.wq-pipe li b{display:block;font-size:1.35rem;color:var(--navy)}
+.wq-pipe li span{font-size:.78rem;color:var(--muted)}
+.wq-pipe li.hot{border-color:#42B5D1;background:var(--pale)}
+.inf-bar{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 6px}
 .chip.on{background:var(--navy);border-color:var(--navy);color:#fff}
-.inf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:14px}
-.inf{position:relative;padding:16px;border-top:4px solid var(--trk,var(--line));display:flex;flex-direction:column;gap:10px}
-.inf.t-w{--trk:#42B5D1}.inf.t-f{--trk:#D4A23C}
+.wq-g{margin:18px 0 6px}
+.wq-gh{display:flex;align-items:baseline;gap:10px;margin:0 0 10px}
+.wq-gh h4{margin:0;font-size:1.08rem}.wq-gh small{color:var(--muted)}
+.wq-g.s .wq-gh h4{color:var(--navy)}.wq-g.s .wq-gh h4::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:#42B5D1;margin-inline-end:8px;box-shadow:0 0 0 4px rgba(66,181,209,.2)}
+details.wq-g>summary{cursor:pointer;list-style:none}details.wq-g>summary::-webkit-details-marker{display:none}
+.inf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));gap:14px}
+.inf{position:relative;padding:16px;display:flex;flex-direction:column;gap:10px;border-top:4px solid #42B5D1}
+.wq-g.s .inf{box-shadow:0 1px 2px rgba(8,48,62,.06),0 10px 26px rgba(66,181,209,.18)}
+.wq-g.x .inf{opacity:.7;border-top-color:var(--line)}
 .inf-h{display:flex;gap:12px;align-items:center}
-.ring{--v:0;flex:0 0 56px;height:56px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--rc) calc(var(--v)*1%),var(--line) 0);}
-.ring b{width:44px;height:44px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-size:1.05rem;color:var(--ink)}
-.inf-h h4{margin:0;font-size:1.05rem;line-height:1.4}.inf-h a{color:var(--muted);font-size:.85rem;text-decoration:none;direction:ltr;unicode-bidi:isolate}
+.ring{flex:0 0 54px;height:54px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--rc) calc(var(--v)*1%),var(--line) 0)}
+.ring b{width:42px;height:42px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-size:1rem;color:var(--ink)}
+.inf-h h4{margin:0;font-size:1.03rem;line-height:1.4}.inf-h a{color:var(--muted);font-size:.84rem;text-decoration:none;direction:ltr;unicode-bidi:isolate}
 .inf-h a:hover{color:var(--navy);text-decoration:underline}
-.tags{display:flex;flex-wrap:wrap;gap:6px}.tag{font-size:.78rem;padding:3px 9px;border-radius:999px;background:var(--new-bg);color:var(--new)}
-.tag.trk{background:color-mix(in srgb,var(--trk) 18%,transparent);color:var(--ink);font-weight:700}
-.tag.t1{background:var(--ok-bg);color:var(--ok)}.tag.t2{background:var(--run-bg);color:var(--run)}.tag.t3{background:#F7E3E0;color:var(--bad)}
-.inf dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:.9rem;line-height:1.7}
-.inf dt{color:var(--muted)}.inf dd{margin:0}
-.inf .nt{font-size:.86rem;color:var(--muted);line-height:1.8;margin:0}
-.inf-f{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:auto;padding-top:8px;border-top:1px dashed var(--line)}
+.wq-role{margin:0;padding:10px 12px;border-radius:10px;background:var(--pale);font-weight:700;line-height:1.7;color:var(--ink);border-inline-start:3px solid #42B5D1}
+.tags{display:flex;flex-wrap:wrap;gap:6px}.tag{font-size:.77rem;padding:3px 9px;border-radius:999px;background:var(--new-bg);color:var(--new)}
+.tag.ok{background:var(--ok-bg);color:var(--ok)}.tag.warn{background:var(--run-bg);color:var(--run)}
+.inf details.nt{font-size:.86rem;color:var(--muted);line-height:1.8}.inf details.nt summary{cursor:pointer;font-weight:700;color:var(--navy)}
+.wq-next{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 12px;border:1px dashed #42B5D1;border-radius:10px}
+.wq-next span{flex:1 1 160px;font-size:.9rem;line-height:1.6}.wq-next span b{display:block;font-size:.75rem;color:var(--muted)}
+.wq-next .btn{padding:7px 14px;font-size:.85rem;background:#0E8A4A}
+.inf-f{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .inf-f select{font:inherit;font-size:.85rem;padding:5px 8px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
 .inf-f .del{margin-inline-start:auto}
-.inf-total{margin:14px 0 0;color:var(--muted)}
+.inf-total{margin:16px 0 0;color:var(--muted)}
+@media (max-width:560px){.wq-pipe{grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}.wq-pipe li{padding:8px 2px}.wq-pipe li span{font-size:.68rem}.wq-hero h4{font-size:1.55rem}}
 </style>
 </head>
 <body>
@@ -483,20 +502,17 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;padding-block:6px 3
             <button class="btn" type="submit">إضافة</button>
           </form>
         </details>
-        <div class="inf-intro">
-          <p><b>قائمة مرشحي ينبع</b> مقيّمة أولياً بمقياس الخطة (100 نقطة، والحد الأدنى 70). الدرجة مبدئية من الملف العام، وتُعتمد بعد طلب لقطة الإحصاءات ورقم «موثوق».</p>
-          <ol class="inf-steps"><li>اطلب لقطة إحصاءات آخر 30 يوماً ونصيب ينبع من المشاهدين.</li><li>طابق رقم «موثوق» في منصة موثوق.</li><li>أعد التقييم في «أدوات القرار» ثم حدّث المرحلة.</li></ol>
-        </div>
-        <div class="inf-bar" role="group" aria-label="تصفية المرشحين">
+        <div class="wq-hero" id="wqHero"></div>
+        <ol class="wq-pipe" id="wqPipe" aria-label="مراحل التواصل"></ol>
+        <div class="inf-bar" role="group" aria-label="تصفية">
           <button type="button" class="chip on" data-pf="">الكل</button>
-          <button type="button" class="chip" data-pf="w">وقف الأم</button>
-          <button type="button" class="chip" data-pf="f">فتية المحراب</button>
+          <button type="button" class="chip" data-pf="mine">مسندة لي</button>
           <button type="button" class="chip" data-pf="سناب">سناب</button>
           <button type="button" class="chip" data-pf="إكس">إكس</button>
           <button type="button" class="chip" data-pf="تيك توك">تيك توك</button>
         </div>
-        <div class="inf-grid" id="pGrid"></div>
-        <p class="inf-total">إجمالي الكلفة المتفق عليها (دون المعتذرين): <b id="pTotal">0</b> ريال</p>
+        <div id="pGroups"></div>
+        <p class="inf-total">التعاون احتسابي بلا مقابل مالي · الرابط الوحيد: <a href="https://store.yq.org.sa/p/173745" target="_blank" rel="noopener">صفحة وقف الأم</a></p>
       </section>
     </div>
 
@@ -755,23 +771,42 @@ function renderTasks(){let l=state.tasks.slice().sort((a,b)=>(a.status===2)-(b.s
   $("#taskCount").textContent=cnt(l.length,"مهمة واحدة","مهمتان","مهام","مهمة");
   $("#taskList").innerHTML=l.length?l.map(x=>taskHTML(x,!filter.area)).join(""):`<div class="empty">${state.tasks.length?"لا توجد مهام بهذه التصفية.":"لا مهام بعد."}</div>`}
 let pf="";
-const TRK={w:"وقف الأم",f:"فتية المحراب"};
-function tierCls(t){return /أولى/.test(t)?"t1":/ثانية/.test(t)?"t2":t?"t3":""}
-function renderPartners(){let l=state.partners.slice().sort((a,b)=>(b.score??-1)-(a.score??-1)||String(a.name).localeCompare(b.name,"ar"));
-  const all=l;if(pf)l=l.filter(x=>x.track===pf||x.plat===pf);
-  $("#pGrid").innerHTML=l.length?l.map(x=>{const v=x.score??0,rc=v>=78?"var(--ok)":v>=70?"var(--run)":"var(--bad)";
-    return `<article class="card inf t-${esc(x.track||"")}" data-id="${esc(x.id)}">
+const NEXT={"مرشح":["أرسل الرسالة الأولى","first"],"تم التواصل":["رتّب زيارة أو اتصالاً مدته 15 دقيقة",""],"موافق":["أرسل الموجز والرابط والكلمة الدلالية","brief"],"متعاقد":["راجع المسودة قبل النشر بيوم (سبت، ثلاثاء، جمعة)",""],"نشر":["اجمع لقطة الإحصاءات بعد 48 ساعة وأرسل الشكر","thanks"],"معتذر":["اشكره وأبقِه للفرص القادمة",""]};
+const GROUPS=[["s","ابدأ بهم","أول من نتواصل معه هذا الأسبوع"],["2","الموجة الثانية","قبل رمضان"],["r","الاحتياط","يُتحقق منهم أولاً"],["x","مستبعد","لا يُتواصل معه حالياً"]];
+function grpOf(x){const t=x.tier||"";return /ابدأ/.test(t)?"s":/مستبعد|لا يُنصح/.test(t)?"x":/ثانية|الموجة|أولى/.test(t)?"2":"r"}
+function waqfNums(){const t=+setting("waqf_target")||0,r=+setting("waqf_raised")||0;return {t,r,rem:Math.max(0,t-r),p:t?Math.min(100,r/t*100):0}}
+function shortName(n){return String(n||"").split(/[|(،]/)[0].trim()}
+function msgFor(kind,x){const w=waqfNums(),p=nf.format(Math.floor(w.p));const n=shortName(x.name);
+  if(kind==="first")return `السلام عليكم ${n}، معك ${me||""} من الجمعية الخيرية لتحفيظ القرآن الكريم بينبع. نتابع حسابك ونراك من أقرب الأصوات لأهل ينبع. عندنا قصة من ينبع نتمنى أن تكون أنت من يرويها: وقف باسم أمهات ينبع بلغ ${p}% من مستهدفه، ونريد أن يكتمل بأهل ينبع قبل رمضان. هل يناسبك اتصال قصير أو زيارة هذا الأسبوع؟`;
+  if(kind==="brief")return `أهلاً ${n}، هذا ملخص ما اتفقنا عليه:\n• الفكرة: «أهدِ أمك سهماً في وقفها»\n• الطلب: سهم 50 ريالاً، أو سهم الوالدين 200، أو سهم الأسرة 300\n• المتبقي اليوم: ${nf.format(w.rem)} ريال\n• الرابط الوحيد: ${LINKS.w}\n• الكلمة الدلالية: ${x.code||"[تُحدد]"}\n• أيام النشر: السبت أو الثلاثاء أو الجمعة\nالتعاون احتسابي، ونراجع المسودة معك قبل النشر بيوم. جزاك الله خيراً.`;
+  if(kind==="thanks")return `جزاك الله خيراً يا ${n}. منشورك قرّب وقف أمهات ينبع من الاكتمال، والمتبقي اليوم ${nf.format(w.rem)} ريال. نتشرف بدعوتك ضيفاً مكرّماً في حفل الجمعية.`;return ""}
+function copyText(t){const ok=()=>notice("نُسخت الرسالة، الصقها في المحادثة.");try{navigator.clipboard.writeText(t).then(ok,()=>fallback())}catch(e){fallback()}
+  function fallback(){const ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");ok()}catch(e){}ta.remove()}}
+function cardHTML(x){const v=x.score??0,rc=v>=78?"var(--ok)":v>=70?"#42B5D1":"var(--bad)";const lic=/\d{4,}/.test(x.license||"");
+  const nx=NEXT[x.stage]||NEXT["مرشح"];
+  return `<article class="card inf" data-id="${esc(x.id)}">
     <div class="inf-h"><div class="ring" style="--v:${v};--rc:${rc}" title="الدرجة المبدئية من 100"><b>${x.score==null?"—":fmt(v)}</b></div>
-      <div><h4>${esc(x.name)}</h4>${x.link?`<a href="${esc(x.link)}" target="_blank" rel="noopener">${esc(x.handle||x.link)}</a>`:`<span class="nt">${esc(x.handle||"")}</span>`}</div></div>
-    <div class="tags">${x.track?`<span class="tag trk">${esc(TRK[x.track]||x.track)}</span>`:""}<span class="tag">${esc(x.plat)}</span><span class="tag">${esc(x.type)}</span>${x.tier?`<span class="tag ${tierCls(x.tier)}">${esc(x.tier)}</span>`:""}</div>
-    <dl>${x.role&&x.role!=="—"?`<dt>الدور</dt><dd>${esc(x.role)}</dd>`:""}${x.license?`<dt>الرخصة</dt><dd>${esc(x.license)}</dd>`:""}${x.code?`<dt>الكلمة الدلالية</dt><dd>${esc(x.code)}</dd>`:""}${+x.cost?`<dt>الكلفة</dt><dd>${fmt(x.cost)} ريال</dd>`:""}</dl>
-    ${x.note?`<p class="nt">${esc(x.note)}</p>`:""}
+      <div><h4>${esc(x.name)}</h4>${x.link?`<a href="${esc(x.link)}" target="_blank" rel="noopener">${esc(x.handle||"الحساب")}</a>`:esc(x.handle||"")}</div></div>
+    ${x.role&&x.role!=="—"?`<p class="wq-role">${esc(x.role)}</p>`:""}
+    <div class="tags"><span class="tag">${esc(x.plat)}</span><span class="tag">${esc(x.type)}</span><span class="tag ${lic?"ok":"warn"}">${lic?"مرخّص ✓":"الرخصة تُطلب"}</span>${x.owner?`<span class="tag">المتابع: ${esc(x.owner)}</span>`:""}</div>
+    ${x.note?`<details class="nt"><summary>ملاحظات التحقق</summary>${esc(x.note)}${x.license?`<br>الرخصة: ${esc(x.license)}`:""}</details>`:""}
+    ${grpOf(x)==="x"?"":`<div class="wq-next"><span><b>الخطوة التالية</b>${esc(nx[0])}</span>${nx[1]?`<button class="btn" type="button" data-act="pmsg" data-msg="${nx[1]}">انسخ الرسالة</button>`:""}</div>`}
     <div class="inf-f"><select data-act="stage" aria-label="المرحلة">${opts(STAGES,null,x.stage)}</select><select data-act="powner" aria-label="المتابع">${opts(MEMBERS,"المتابع: —",x.owner||"")}</select><button class="del" data-act="pdel" type="button">حذف</button></div>
-    </article>`}).join(""):`<div class="empty">${all.length?"لا أسماء بهذه التصفية.":"لا أسماء بعد. أضف المرشحين من المؤثرين والسفراء ليتابعهم الفريق."}</div>`;
-  const tot=all.filter(x=>x.stage!=="معتذر").reduce((a,x)=>a+(+x.cost||0),0);$("#pTotal").textContent=fmt(tot);
-  const q=all.filter(x=>(x.score??0)>=70).length;
-  $("#pTotalTop").textContent=all.length?`${fmt(all.length)} اسماً · ${fmt(q)} فوق الحد الأدنى · ${fmt(tot)} ريال`:""}
-document.addEventListener("click",e=>{const c=e.target.closest("[data-pf]");if(!c)return;pf=c.dataset.pf;document.querySelectorAll("[data-pf]").forEach(z=>z.classList.toggle("on",z===c));renderPartners()});
+  </article>`}
+function renderPartners(){const all=state.partners.slice().sort((a,b)=>(b.score??-1)-(a.score??-1)||String(a.name).localeCompare(b.name,"ar"));
+  let l=all;if(pf==="mine")l=l.filter(x=>x.owner===me);else if(pf)l=l.filter(x=>x.plat===pf);
+  const w=waqfNums();
+  $("#wqHero").innerHTML=`<div class="wq-k">حملة المؤثرين · مشروع واحد</div><h4>سفراء وقف الأم</h4><p>كل صوت من ينبع يقرّب الوقف من الاكتمال. هدفنا أن يصل «المتبقي» إلى الصفر قبل رمضان 1448هـ.</p>
+    <div class="wq-bar" role="progressbar" aria-valuenow="${Math.round(w.p)}" aria-valuemin="0" aria-valuemax="100"><i style="width:${w.p.toFixed(1)}%"></i></div>
+    <div class="wq-nums"><span>المحقق <b><bdi dir="ltr">${nf.format(Math.floor(w.p))}%</bdi></b></span><span>المتبقي <b>${fmt(w.rem)}</b> ريال</span><span>السفراء النشطون <b>${fmt(all.filter(x=>["موافق","متعاقد","نشر"].includes(x.stage)).length)}</b> من ${fmt(all.filter(x=>grpOf(x)!=="x").length)}</span></div>`;
+  const st=["مرشح","تم التواصل","موافق","متعاقد","نشر"];
+  $("#wqPipe").innerHTML=st.map(s=>{const n=all.filter(x=>x.stage===s&&grpOf(x)!=="x").length;return `<li class="${n&&s!=="مرشح"?"hot":""}"><b>${fmt(n)}</b><span>${s}</span></li>`}).join("");
+  $("#pGroups").innerHTML=l.length?GROUPS.map(([k,t,sub])=>{const g=l.filter(x=>grpOf(x)===k);if(!g.length)return "";
+    const head=`<h4>${t}</h4><small>${fmt(g.length)} · ${sub}</small>`,grid=`<div class="inf-grid">${g.map(cardHTML).join("")}</div>`;
+    return k==="x"?`<details class="wq-g x"><summary class="wq-gh">${head}</summary>${grid}</details>`:`<section class="wq-g ${k}"><div class="wq-gh">${head}</div>${grid}</section>`}).join(""):`<div class="empty">${all.length?"لا أسماء بهذه التصفية.":"لا أسماء بعد."}</div>`;
+  $("#pTotalTop").textContent=all.length?`${fmt(all.length)} اسماً`:""}
+document.addEventListener("click",e=>{const c=e.target.closest("[data-pf]");if(c){pf=c.dataset.pf;document.querySelectorAll("[data-pf]").forEach(z=>z.classList.toggle("on",z===c));renderPartners();return}
+  const m=e.target.closest("[data-act='pmsg']");if(m){const id=m.closest("[data-id]").dataset.id;const x=state.partners.find(z=>String(z.id)===id);if(x)copyText(msgFor(m.dataset.msg,x))}});
 const pct=(a,b)=>b?nf.format(+(a/b*100).toFixed(1))+"%":"—";
 function renderWeeks(){const l=state.weeks.slice().sort((a,b)=>b.week-a.week);const t=totals();
   $("#wBody").innerHTML=l.length?l.map(x=>`<tr><td><b>${fmt(x.week)}</b></td><td>${fmt(x.views)}</td><td>${fmt(x.clicks)}</td><td>${pct(x.clicks,x.views)}</td><td>${fmt(x.don)}</td><td>${pct(x.don,x.clicks)}</td><td>${fmt(x.msgs)}</td><td>${fmt(x.subs)}</td><td>${fmt(x.spend)}</td><td>${x.don?fmt(Math.round(x.spend/x.don)):"—"}</td><td style="white-space:normal;min-width:200px">${esc(x.note||"")}</td><td>${esc(x.updated_by||"")}</td></tr>`).join(""):`<tr><td colspan="12"><div class="empty">لم تُسجَّل أرقام بعد.</div></td></tr>`;
